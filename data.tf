@@ -2,7 +2,7 @@
 data "aws_ami" "joindevops" {
 
     most_recent = true
-    owners = ["973714476881"]
+    owners = ["230937596690"]
 
     filter {
         name   = "name"
