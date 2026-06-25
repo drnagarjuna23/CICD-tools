@@ -45,7 +45,7 @@ resource "aws_instance" "sonar" {
   instance_type = "t3.large"
   vpc_security_group_ids = [aws_security_group.main.id]
   subnet_id = "subnet-046f5224013bde2b6" #replace your Subnet in default VPC
-  key_name = "daws-86s"
+  key_name = "drnagarjuna23"
   # need more for terraform
   root_block_device {
     volume_size = 20
