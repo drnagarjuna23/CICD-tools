@@ -32,7 +32,18 @@ yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.
 yum -y install terraform
 
 # Trivy
-curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin v0.68.2
+sudo rpm --import https://aquasecurity.github.io/trivy-repo/rpm/public.key
+
+cat <<EOF | sudo tee /etc/yum.repos.d/trivy.repo
+[trivy]
+name=Trivy repository
+baseurl=https://aquasecurity.github.io/trivy-repo/rpm/releases/\$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://aquasecurity.github.io/trivy-repo/rpm/public.key
+EOF
+
+sudo dnf install -y trivy
 
 # Maven
 dnf install maven -y
